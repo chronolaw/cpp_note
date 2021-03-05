@@ -25,17 +25,17 @@ cd ${HOME}
 git clone https://github.com/chronolaw/cpp_note --depth=1
 
 # setup env
-cp ${HOME}/cpp_note/env/vimrc     ${HOME}/.vimrc \
-cp ${HOME}/cpp_note/env/bashrc    ${HOME}/.bashrc \
-cp ${HOME}/cpp_note/env/gitconfig ${HOME}/.gitconfig \
+cp ${HOME}/cpp_note/env/vimrc     ${HOME}/.vimrc
+cp ${HOME}/cpp_note/env/bashrc    ${HOME}/.bashrc
+cp ${HOME}/cpp_note/env/gitconfig ${HOME}/.gitconfig
 
 # source
 
 JSON_VERSION="3.9.1"
 CPR_VERSION="1.4.0"
-LUAJIT_VERSION="2.1-20200102"
+LUAJIT_VERSION="2.1-20201229"
 LUABRIDAGE_VERSION="2.6"
-GPERF_VERSION="2.8"
+GPERF_VERSION="2.9.1"
 
 #echo ${JSON_VERSION}
 #echo ${HOME}
