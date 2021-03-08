@@ -78,6 +78,7 @@ ln -s ~/github/gperftools-${GPERF_VERSION}/pprof-symbolize /bin/pprof
 
 # flame graph
 git clone https://github.com/brendangregg/FlameGraph.git --depth=1
+ln -s ~/github/FlameGraph/flamegraph.pl /usr/local/bin/flamegraph.pl
 #ln -s ~/github/FlameGraph/flamegraph.pl ~/cpp_note/section4/
 
 # clean
