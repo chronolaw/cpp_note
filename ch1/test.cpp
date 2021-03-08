@@ -1,7 +1,7 @@
 // Copyright (c) 2021 by Chrono
 //
-// g++ test.cpp -std=c++14 -o a.out;./a.out
 // g++ test.cpp -std=c++17 -o a.out;./a.out
+// g++ test.cpp -std=c++20 -o a.out;./a.out
 // g++ test.cpp -std=c++17 -I../common -o a.out;./a.out
 
 #include <iostream>
