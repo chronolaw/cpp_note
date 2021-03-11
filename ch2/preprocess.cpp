@@ -15,6 +15,10 @@
 // comment it for better pre-process output
 #include <iostream>
 
+#if __has_include(<optional>)
+#  include <optional>
+#endif
+
 using namespace std;
 
 // you can try this
