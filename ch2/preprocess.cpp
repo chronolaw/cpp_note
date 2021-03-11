@@ -3,10 +3,8 @@
 // pre-process source:
 // g++ preprocess.cpp -E -o a.cxx
 //
-// g++ preprocess.cpp -std=c++20 -o a.out;./a.out
-// g++ preprocess.cpp -std=c++17 -o a.out;./a.out
-// g++ preprocess.cpp -std=c++14 -o a.out;./a.out
-// g++ preprocess.cpp -std=c++11 -o a.out;./a.out
+// g++ preprocess.cpp -Wall -std=c++17 -o a.out;./a.out
+// g++ preprocess.cpp -Wall -std=c++20 -o a.out;./a.out
 //
 // g++ preprocess.cpp -DNDEBUG -std=c++17 -o a.out;./a.out
 //
@@ -131,7 +129,8 @@ int main()
 
     my_own::case3();
 
-    [[gnu::unused]] // ignore warning
+    //[[gnu::unused]] // ignore warning
+    [[maybe_unused]] // ignore warning
     my_own::MyClass obj;
 
     case4();
