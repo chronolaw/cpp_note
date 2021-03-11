@@ -3,18 +3,19 @@
 # chrono @ 2021-03
 
 # apt-get
-DEBIAN_FRONTEND=noninteractive apt-get update
-DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        vim cmake gdb pstack strace  \
-        libmsgpack-dev protobuf-compiler libprotobuf-dev libprotoc-dev \
-        libcurl4-openssl-dev libzmq3-dev \
-        python3-dev python3-pip \
-        google-perftools libgoogle-perftools-dev
-
-DEBIAN_FRONTEND=noninteractive apt-get autoremove -y
-
-# python3 pybind11
-pip3 install pybind11
+#DEBIAN_FRONTEND=noninteractive apt-get update
+#DEBIAN_FRONTEND=noninteractive apt-get install -y \
+#        vim cmake gdb pstack strace  \
+#        libmsgpack-dev protobuf-compiler libprotobuf-dev libprotoc-dev \
+#        libcurl4-openssl-dev libzmq3-dev \
+#        python3-dev python3-pip \
+#        google-perftools libgoogle-perftools-dev
+#
+#DEBIAN_FRONTEND=noninteractive apt-get autoremove -y
+#
+## python3 pybind11
+#pip3 install pybind11
+#exit
 
 #WORKDIR='/root/'
 #HOME='/root'

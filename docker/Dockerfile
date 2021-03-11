@@ -11,7 +11,7 @@
 
 # docker run -it --rm chronolaw/cpp_note
 
-ARG SRC_IMAGE="gcc:7"
+ARG SRC_IMAGE="base:gcc7"
 
 FROM ${SRC_IMAGE}
 
