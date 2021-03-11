@@ -106,6 +106,11 @@ void case4()
     cout << "running on others" << endl;
 #endif  //__linux__
 
+#if defined(__cpp_modules)
+    cout << "moudle enable" << endl;
+#else
+    cout << "moudle disable" << endl;
+#endif
 
 #if defined(__cpp_decltype_auto)
     cout << "decltype(auto) enable" << endl;
