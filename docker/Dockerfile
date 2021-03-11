@@ -11,11 +11,12 @@
 
 # docker run -it --rm chronolaw/cpp_note
 
-ARG SRC_IMAGE="base:gcc7"
+ARG SRC_IMAGE="chronolaw/cpp_base:gcc7"
 
 FROM ${SRC_IMAGE}
 
 WORKDIR /root
+#WORKDIR /root/cpp_note
 
 COPY setup.sh /tmp
 

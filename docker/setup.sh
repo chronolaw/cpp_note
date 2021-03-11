@@ -20,15 +20,18 @@
 #WORKDIR='/root/'
 #HOME='/root'
 
+REPO='cpp_study'
+
 cd ${HOME}
 
 # git source code
-git clone https://github.com/chronolaw/cpp_note --depth=1
+git clone https://github.com/chronolaw/${REPO} --depth=1
+#git clone git@github.com:chronolaw/${REPO}.git --depth=1
 
 # setup env
-cp ${HOME}/cpp_note/env/vimrc     ${HOME}/.vimrc
-cp ${HOME}/cpp_note/env/bashrc    ${HOME}/.bashrc
-cp ${HOME}/cpp_note/env/gitconfig ${HOME}/.gitconfig
+cp ~/${REPO}/env/vimrc     ~/.vimrc
+cp ~/${REPO}/env/bashrc    ~/.bashrc
+cp ~/${REPO}/env/gitconfig ~/.gitconfig
 
 # source
 
@@ -41,15 +44,15 @@ GPERF_VERSION="2.9.1"
 #echo ${JSON_VERSION}
 #echo ${HOME}
 
-mkdir ${HOME}/github
-cd ${HOME}/github
+mkdir ~/github
+cd ~/github
 
 # test
 #exit
 
 # json
 curl -fsL https://github.com/nlohmann/json/releases/download/v${JSON_VERSION}/json.hpp -o json.hpp
-ln -s ~/github/json.hpp ~/cpp_note/common/
+ln -s ~/github/json.hpp ~/${REPO}/common/
 
 # curl/cpr
 curl -fsL https://github.com/whoshuu/cpr/archive/${CPR_VERSION}.tar.gz -o cpr.tgz
@@ -70,7 +73,7 @@ cd ..
 # luabridge
 curl -fsL https://github.com/vinniefalco/LuaBridge/archive/${LUABRIDAGE_VERSION}.tar.gz -o LuaBridge.tgz
 tar xfz LuaBridge.tgz
-ln -s ~/github/LuaBridge-${LUABRIDAGE_VERSION}/Source/LuaBridge/  ~/cpp_note/common/
+ln -s ~/github/LuaBridge-${LUABRIDAGE_VERSION}/Source/LuaBridge/  ~/${REPO}/common/
 
 # gperftools
 curl -fsL https://github.com/gperftools/gperftools/releases/download/gperftools-${GPERF_VERSION}/gperftools-${GPERF_VERSION}.tar.gz -o gperf.tgz
@@ -80,7 +83,7 @@ ln -s ~/github/gperftools-${GPERF_VERSION}/pprof-symbolize /bin/pprof
 # flame graph
 git clone https://github.com/brendangregg/FlameGraph.git --depth=1
 ln -s ~/github/FlameGraph/flamegraph.pl /usr/local/bin/flamegraph.pl
-#ln -s ~/github/FlameGraph/flamegraph.pl ~/cpp_note/section4/
+#ln -s ~/github/FlameGraph/flamegraph.pl ~/${REPO}/section4/
 
 # clean
 rm *.tgz
