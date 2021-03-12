@@ -37,6 +37,7 @@ void last_func()
     printf("after main()\n");
 }
 
+[[gnu::const]]
 [[gnu::always_inline]] inline
 int get_num()
 {
