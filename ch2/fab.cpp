@@ -5,10 +5,6 @@
 //
 // gcc -E -dM - < /dev/null
 
-#if __cplusplus < 201402
-# error "c++ is too old"
-#endif
-
 #include <iostream>
 
 template<int N>
@@ -32,16 +28,6 @@ struct fib<1>
     static const int value = 1;
 };
 
-constexpr
-int const_fib(int n)
-{
-    if (n <= 1) {
-        return 1;
-    }
-
-    return const_fib(n - 1) + const_fib(n - 2);
-}
-
 int main()
 {
     using namespace std;
@@ -50,8 +36,6 @@ int main()
     cout << fib<3>::value << endl;
     cout << fib<4>::value << endl;
     cout << fib<5>::value << endl;
-
-    cout << const_fib(10) << endl;
 
     cout << "fab demo" << endl;
 }
