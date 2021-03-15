@@ -140,10 +140,17 @@ void case7()
     cout << endl;
 
     tuple<int, string, double> x {1, "x", 0.1};
+    //int a; string b; double c;
+    //std::tie(a, b, c) = x;
     auto [a, b, c] = x;
 
     assert(a == 1 && b == "x");
 
+    std::map<int, std::string> m = {{1,"a"}, {2,"b"}};
+
+    for (auto& [k,v] : m) {
+        cout << k << "=>" << v << endl;
+    }
 }
 
 class DemoClass final
