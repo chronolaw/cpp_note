@@ -101,6 +101,12 @@ private:
     std::string         s = "hello";
     std::vector<int>    v{1, 2, 3};
 public:
+    static const
+    int                 x = 0;
+
+    inline static
+    std::string         prefix = "/home";
+public:
     DemoInit() = default;
    ~DemoInit() = default;
 public:
@@ -113,6 +119,17 @@ public:
 int main()
 {
     using namespace std;
+
+    //DemoClass obj = "sting ctor";
+    DemoClass obj = (DemoClass)"sting ctor";
+
+    //bool b = obj;
+    bool b = static_cast<bool>(obj);
+    if (obj) {
+        cout << "explicit bool ok" << endl;
+    }
+
+    cout << DemoInit::prefix << endl;
 
     cout << "show your class." << endl;
 }
