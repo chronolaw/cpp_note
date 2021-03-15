@@ -14,7 +14,8 @@ void case1()
     const volatile int MAX_LEN       = 1024;
     const std::string NAME  = "metroid";
 
-    auto ptr = (int*)(&MAX_LEN);
+    //auto ptr = (int*)(&MAX_LEN);
+    auto ptr = const_cast<int*>(&MAX_LEN);
     *ptr = 2048;
     cout << MAX_LEN << endl;
 
