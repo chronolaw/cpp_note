@@ -55,29 +55,37 @@ private:
     mutable mutex_type  m_mutex;
 
     const long  MAX_SIZE = 256;
-    int         m_value;
+    int         m_value = 100;
 public:
     int get_value() const
     {
         return m_value;
     }
 
+    void incr()
+    {
+        m_value++;
+    }
+
     void save_data() const
     {
         m_mutex++;
+        //m_value++;
     }
 };
 
-
-constexpr
-int fib(int n)
+void case3()
 {
-    if (n == 0 || n == 1) {
-        return 1;
-    }
+    using namespace std;
 
-    return fib(n - 1) + fib(n - 2);
+    DemoClass obj;
+    const auto& cobj = obj;
+
+    cout << cobj.get_value() << endl;
+    //cobj.incr();
+    cobj.save_data();
 }
+
 
 int main()
 {
@@ -85,11 +93,7 @@ int main()
 
     case1();
     case2();
-
-    constexpr
-    int fib5 = fib(5);
-
-    cout << fib5 << endl;
+    case3();
 
     cout << "const demo" << endl;
 }
