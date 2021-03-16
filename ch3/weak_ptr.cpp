@@ -53,12 +53,27 @@ void case1()
     //assert(n2.use_count() == 2);
 }
 
+class SharedSelf final :
+    public std::enable_shared_from_this<SharedSelf>
+{ };
+
+void case2()
+{
+    using namespace std;
+
+    auto ptr1 = make_shared<SharedSelf>();
+    assert(ptr1.use_count() == 1);
+
+    auto ptr2 = ptr1->shared_from_this();
+    assert(ptr2.use_count() == 2);
+}
+
 int main()
 {
     using namespace std;
 
     case1();
-    //case2();
+    case2();
 
     cout << "weak_ptr demo" << endl;
 }
