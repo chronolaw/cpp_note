@@ -74,6 +74,13 @@ void case3()
                 }
             )
          << endl;
+
+    auto f3 = [](long x) -> int
+              {
+                  return static_cast<int>(x);
+              };
+
+    cout << f3(10L) << endl;
 }
 
 void case4()
@@ -96,10 +103,17 @@ void case4()
         x += 20;
     };
 
+    auto f4 = [=]() mutable
+    {
+        x += 10;
+    };
+
     f1();
     f2();
     cout << x << endl;
     f3();
+    cout << x << endl;
+    f4();
     cout << x << endl;
 }
 
