@@ -158,8 +158,22 @@ void case6()
 
     string str = "matrix";
     cout << f(str) << endl;
+
 }
 
+void case7()
+{
+#if __cplusplus >=202002
+    auto f = []<typename T>(const T& x)
+    {
+        static_assert(is_integral_v<T>)
+        return x + x;
+    };
+
+    cout << f(3) << endl;
+
+#endif
+}
 // demo for function + lambda
 class Demo final
 {
@@ -183,6 +197,7 @@ int main()
     case4();
     case5();
     case6();
+    case7();
 
     Demo d;
     d.print();
