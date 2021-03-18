@@ -8,7 +8,12 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <regex>
+
+#if __has_include(<format>)
+#include <format>
+#endif
 
 void case1()
 {
@@ -22,6 +27,13 @@ void case1()
     assert(str[1] == 'b');
     assert(str.find("1") == string::npos);
     assert(str + "d" == "abcd");
+    auto p = str.c_str();
+    cout << p << endl;
+
+    vector<char> v;
+    v.push_back('a');
+    v.push_back('b');
+    assert(v.front() == 'a');
 }
 
 void case2()
@@ -100,65 +112,22 @@ public:
     }
 };
 
-static
-auto make_regex = [](const auto& txt)
-{
-    return std::regex(txt);
-};
-
-static
-auto make_match = []()
-{
-    return std::smatch();
-};
 
 void case5()
 {
     using namespace std;
 
-    //using sregex = std::regex;
-    //using cregex = std::regex;
+#if __has_include(<format>)
 
-    auto str = "neir:automata"s;
+    cout << format("{}", 100L) << endl;
+    cout << format("{:6}", "hello") << endl;
+    cout << format("{:04}, {:+04}", 100L) << endl;
+    cout << format("{1}-{1}", "hello") << endl;
 
-    auto reg  = make_regex(R"(^(\w+)\:(\w+)$)");
-    auto what = make_match();
+    cout << format("{{xxx}}") << endl;
 
-    assert(regex_match(str, what, reg));
-
-    for(const auto& x : what) {
-        cout << x << ',';
-    }
-    cout << endl;
+#endif
 }
-
-void case6()
-{
-    using namespace std;
-
-    auto str = "god of war"s;
-
-    auto reg  = make_regex(R"((\w+)\s(\w+))");
-    auto what = make_match();
-
-    auto found = regex_search(
-                    str, what, reg);
-
-    assert(found);
-    assert(!what.empty());
-    assert(what[1] == "god");
-    assert(what[2] == "of");
-
-    auto new_str = regex_replace(
-        str,
-        make_regex(R"(\w+$)"),
-        "peace"
-    );
-
-    cout << new_str << endl;
-}
-
-
 
 int main()
 {
@@ -167,7 +136,6 @@ int main()
     case3();
     case4();
     case5();
-    case6();
 
     using namespace std;
 
