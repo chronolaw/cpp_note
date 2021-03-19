@@ -107,6 +107,18 @@ void case4()
     );
 #endif
     cout << endl;
+
+// it can not work in gcc 7.5
+#if __cplusplus >= 202002
+    for_each_n(
+        cbegin(v), 3,
+        [](const auto& x)
+        {
+            cout << x*x << ",";
+        }
+    );
+#endif
+    cout << endl;
 }
 
 void case5()
