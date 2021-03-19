@@ -132,6 +132,10 @@ void case5()
         cout << x << ",";
     };
 
+    std::reverse(begin(v), end(v));
+    for_each(cbegin(v), cend(v), print);
+    cout << endl;
+
     cout << "sorting..." << endl;
 
     // total sort
@@ -229,14 +233,24 @@ void case6()
     );
     //cout << *pos << endl;
 
+    cout << "equal_range:";
+#if __cplusplus >= 201703
+    auto [lower, upper] = std::equal_range(
+        cbegin(v), cend(v), 7
+    );
+    for_each(
+        lower, std::next(upper), print
+    );
+#else
     auto range = std::equal_range(
-        cbegin(v), cend(v), 9
+        cbegin(v), cend(v), 7
     );
     //cout << *range.first << endl;
     //cout << *range.second << endl;
     for_each(
         range.first, std::next(range.second), print
     );
+#endif
     cout << endl;
 }
 
@@ -257,6 +271,12 @@ void case7()
 
     for_each(
         lower_pos, upper_pos, print
+    );
+    cout << endl;
+
+    auto [p1, p2] = s.equal_range(7);
+    for_each(
+        p1, p2, print
     );
     cout << endl;
 }
