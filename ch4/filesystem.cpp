@@ -9,9 +9,12 @@
 
 #if __has_include(<filesystem>)
 #include <filesystem>
+using namespace std::filesystem;
 #else
 #include <experimental/filesystem>
+using namespace std::experimental::filesystem;
 #endif
+
 
 void case1()
 {
