@@ -1,4 +1,4 @@
-// Copyright (c) 2020 by Chrono
+// Copyright (c) 2021 by Chrono
 //
 // g++ thread_local.cpp -lpthread -std=c++17 -o a.out;./a.out
 // g++ thread_local.cpp -lpthread -std=c++20 -o a.out;./a.out
