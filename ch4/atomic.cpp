@@ -25,10 +25,27 @@ void case1()
 
 void case2()
 {
-    atomic_int  x {0};
+    atomic_uint  x {0};
 
     x.store(10);
     assert(x.load() == 10);
+
+    auto v = x.fetch_add(5);
+    assert(v == 10 && x == 15);
+
+    v = x.fetch_sub(2);
+    assert(v == 15 && x == 13);
+
+    auto u = x.exchange(100);
+    assert(u == 13 && x == 100);
+
+    unsigned int w = 100;
+    auto flag = x.compare_exchange_strong(w, 42);
+    assert(flag && x == 42);
+
+    w = 0;
+    flag = x.compare_exchange_strong(w, 10);
+    assert(!flag && w == 42);
 }
 
 void case3()
