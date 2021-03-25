@@ -78,12 +78,17 @@ void case4()
     auto*       x2 = &x;
     const auto& x3 = x;
     auto        x4 = &x3;
+    auto&&      x5 = x;
 
     using namespace std;
 
     cout << *x2 << endl;
     cout << *x4 << endl;
     //cout << typeid(x4).name() << endl;
+    //cout << typeid(x5).name() << endl;
+    static_assert(is_reference_v<decltype(x3)>);
+    static_assert(is_pointer_v<decltype(x4)>);
+    static_assert(is_reference_v<decltype(x5)>);
 }
 
 void case5()
