@@ -106,12 +106,14 @@ public:
 
     inline static
     std::string         prefix = "/home";
+    //static std::string         prefix;
 public:
     DemoInit() = default;
    ~DemoInit() = default;
 public:
     DemoInit(int x) : a(x) {}
 };
+//std::string DemoInit::prefix = "/home";
 
 #endif
 
