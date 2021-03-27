@@ -24,7 +24,8 @@ spec:
     containers:
 
     - name: cpp-note
-      image: chronolaw/cpp_note
+      image: chronolaw/cpp_note:gcc7
+      #image: chronolaw/cpp_note:gcc10
       workingDir: /root/cpp_note
 
       # exec or attach into this container
