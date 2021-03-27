@@ -62,6 +62,9 @@ cmake . -DUSE_SYSTEM_CURL=ON -DBUILD_CPR_TESTS=OFF
 make && make install && make clean
 cd ..
 
+# cinatra
+git clone git@github.com:qicosmos/cinatra.git --depth=1
+
 # luajit
 curl -fsL https://github.com/openresty/luajit2/archive/v${LUAJIT_VERSION}.tar.gz -o luajit.tgz
 tar xfz luajit.tgz
