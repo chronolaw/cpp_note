@@ -4,7 +4,12 @@
 // g++ const.cpp -std=c++20 -o a.out;./a.out
 // g++ const.cpp -std=c++17 -I../common -o a.out;./a.out
 
+#include <cassert>
+
 #include <iostream>
+
+#include <utility>
+#include <type_traits>
 
 void case1()
 {
@@ -45,6 +50,13 @@ void case2()
     cout << *ps2 << endl;
 
     const string* const ps3 = &name;
+
+    //auto&& s = std::as_const(name);
+    decltype(auto) s = std::as_const(name);
+    assert(std::is_const_v<
+            std::remove_reference_t<decltype(s)>
+           >);
+    assert(std::is_reference_v<decltype(s)>);
 }
 
 class DemoClass final
@@ -79,7 +91,9 @@ void case3()
     using namespace std;
 
     DemoClass obj;
-    const auto& cobj = obj;
+    //const auto& cobj = obj;
+    //decltype(auto) cobj = std::as_const(obj);
+    auto&& cobj = std::as_const(obj);
 
     cout << cobj.get_value() << endl;
     //cobj.incr();
