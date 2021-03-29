@@ -65,8 +65,8 @@ cd ..
 # cinatra
 git clone https://github.com/qicosmos/cinatra --depth=1
 #git clone git@github.com:qicosmos/cinatra.git --depth=1
-ln -s ~/github/cinatra/include ~/${REPO}/common/include
-ln -s ~/github/cinatra/cinatra.hpp ~/${REPO}/common/
+ln -s ~/github/cinatra/include/cinatra ~/${REPO}/common/cinatra
+ln -s ~/github/cinatra/include/cinatra.hpp ~/${REPO}/common/
 
 # luajit
 curl -fsL https://github.com/openresty/luajit2/archive/v${LUAJIT_VERSION}.tar.gz -o luajit.tgz
