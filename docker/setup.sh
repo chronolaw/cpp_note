@@ -25,8 +25,8 @@ REPO='cpp_study'
 cd ${HOME}
 
 # git source code
-git clone https://github.com/chronolaw/${REPO} --depth=1
-#git clone git@github.com:chronolaw/${REPO}.git --depth=1
+#git clone https://github.com/chronolaw/${REPO} --depth=1
+git clone git@github.com:chronolaw/${REPO}.git --depth=1
 
 # setup env
 cp ~/${REPO}/env/vimrc     ~/.vimrc
@@ -84,7 +84,8 @@ tar xfz gperf.tgz
 ln -s ~/github/gperftools-${GPERF_VERSION}/pprof-symbolize /bin/pprof
 
 # flame graph
-git clone https://github.com/brendangregg/FlameGraph.git --depth=1
+#git clone https://github.com/brendangregg/FlameGraph.git --depth=1
+git clone git@github.com:brendangregg/FlameGraph.git --depht=1
 ln -s ~/github/FlameGraph/flamegraph.pl /usr/local/bin/flamegraph.pl
 #ln -s ~/github/FlameGraph/flamegraph.pl ~/${REPO}/section4/
 
