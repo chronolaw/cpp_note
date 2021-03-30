@@ -4,6 +4,8 @@
 // g++ others.cpp -std=c++20 -o a.out;./a.out
 //
 
+#include <cassert>
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -58,6 +60,32 @@ void case4()
     for(int i = 0;i < 3;i++) {
         cout << "hello world" << endl;
     }
+
+    vector<int> v {1,2,3};
+    if (auto pos = v.end(); !v.empty()) {
+        cout << pos - v.begin() << endl;
+    }
+
+    for (auto pos = v.end(); !v.empty();) {
+        cout << pos - v.begin() << endl;
+        break;
+    }
+}
+
+void case5()
+{
+    using namespace std;
+
+    auto a = 10;
+    auto b = 010;
+    auto c = 0x10;
+
+    assert(a == 10 && b == 8 && c == 16);
+    cout << a << b << c << endl;
+
+    auto x = 0b11010010;
+    //cout << x << endl;
+    assert(x == 0xD2);
 }
 
 
@@ -69,6 +97,7 @@ int main()
     case2();
     case3();
     case4();
+    case5();
 
-    cout << "others deom" << endl;
+    cout << "others demo" << endl;
 }
