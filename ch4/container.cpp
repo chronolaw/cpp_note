@@ -194,6 +194,21 @@ void case6()
     cout << endl;
 }
 
+void vector_capacity()
+{
+    constexpr int N = 5;
+
+    vector<int> v(N);
+    cout << v.capacity() << endl;
+
+    for (int i = 0;i < 2*N; i++) {
+        v.push_back(i);
+    }
+
+    cout << v.size() << endl;
+    cout << v.capacity() << endl;
+}
+
 
 int main()
 {
