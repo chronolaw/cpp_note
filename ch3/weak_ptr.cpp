@@ -66,6 +66,9 @@ void case2()
 
     auto ptr2 = ptr1->shared_from_this();
     assert(ptr2.use_count() == 2);
+
+    auto ptr3 = ptr1->weak_from_this();
+    assert(!ptr3.expired() && ptr1.use_count() == 2);
 }
 
 int main()
