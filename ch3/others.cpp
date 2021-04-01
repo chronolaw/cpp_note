@@ -88,6 +88,19 @@ void case5()
     assert(x == 0xD2);
 }
 
+void case6()
+{
+    using namespace std;
+
+    auto a = 0b1011'0101;
+    auto b = 07'6'6;
+    auto c = 1'000'000;
+    auto d = 0xFA'BE'03;
+    auto e = 9'777'1'88'10;
+
+    cout << a << b << c << d << endl;
+}
+
 
 int main()
 {
@@ -98,6 +111,7 @@ int main()
     case3();
     case4();
     case5();
+    case6();
 
     cout << "others demo" << endl;
 }
