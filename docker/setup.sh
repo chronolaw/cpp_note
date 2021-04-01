@@ -59,7 +59,7 @@ ln -s ~/github/json.hpp ~/${REPO}/common/
 # spdlog && fmtlib
 curl -fsL https://github.com/gabime/spdlog/archive/v${SPDLOG_VERSION}.tar.gz -o spdlog.tgz
 tar xfz spdlog.tgz
-cp spdlog-${SPDLOG_VERSION}
+cd spdlog-${SPDLOG_VERSION}
 mkdir build &&  cd build
 cmake .. && make -j && make install && make clean
 cd ..
