@@ -36,18 +36,18 @@ cp ~/${REPO}/env/gitconfig ~/.gitconfig
 
 # source
 
-JSON_VERSION="3.9.1"
-SPDLOG_VERSION="1.8.5"
-CPR_VERSION="1.4.0"
-LUAJIT_VERSION="2.1-20201229"
+#JSON_VERSION="3.9.1"
+#SPDLOG_VERSION="1.8.5"
+#CPR_VERSION="1.4.0"
+#LUAJIT_VERSION="2.1-20201229"
 LUABRIDAGE_VERSION="2.6"
-GPERF_VERSION="2.9.1"
+#GPERF_VERSION="2.9.1"
 
 #echo ${JSON_VERSION}
 #echo ${HOME}
 
 #mkdir ~/github
-cd ~/github
+#cd ~/github
 
 # test
 #exit
