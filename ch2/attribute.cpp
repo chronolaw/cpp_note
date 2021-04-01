@@ -3,6 +3,7 @@
 // g++ attribute.cpp -Werror -std=c++17 -o a.out;./a.out
 // g++ attribute.cpp -Werror -std=c++20 -o a.out;./a.out
 // g++ attribute.cpp -Wno-deprecated-declarations -std=c++17 -o a.out;
+// g++ attribute.cpp -Wno-deprecated-declarations -std=c++20 -o a.out;
 //
 
 #include <cassert>

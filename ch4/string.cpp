@@ -118,6 +118,7 @@ void case5()
     using namespace std;
 
 #if __has_include(<format>)
+    cout << "C++20 format" << endl;
 
     cout << format("{}", 100L) << endl;
     cout << format("{:6}", "hello") << endl;
