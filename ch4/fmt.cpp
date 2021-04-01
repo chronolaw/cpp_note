@@ -32,8 +32,11 @@ void case1()
 
     cout << format("{}", 100L) << endl;
     cout << format("{:6}", "hello") << endl;
+
     //cout << format("{:04}, {:+04}", 100L) << endl;
-    //cout << format("{1}-{1}", "hello") << endl;
+
+    cout << format("{0}-{0}, {1} {2}",
+                   "hello", 2.718, 3.14) <<endl;
 
     cout << format("{{xxx}}") << endl;
 
