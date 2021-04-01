@@ -6,6 +6,9 @@
 # sudo usermod -aG docker ${USER}
 
 # docker build -f docker/Dockerfile -t chronolaw/cpp_note .
+# docker build -f docker/Dockerfile -t chronolaw/cpp_note:gcc7 .
+# docker build -f docker/Dockerfile -t chronolaw/cpp_note:gcc10 .
+
 # docker build -t chronolaw/cpp_note .
 
 # SRC_IMAGE=gcc:7  docker build -t chronolaw/cpp_note:gcc7  .
