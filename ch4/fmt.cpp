@@ -31,6 +31,7 @@ void case1()
     cout << "C++20 format" << endl;
 
     cout << format("{}", 100L) << endl;
+    cout << format("{:#}", 100L) << endl;
     cout << format("{:6}", "hello") << endl;
 
     //cout << format("{:04}, {:+04}", 100L) << endl;
