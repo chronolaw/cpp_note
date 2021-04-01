@@ -37,6 +37,7 @@ cp ~/${REPO}/env/gitconfig ~/.gitconfig
 # source
 
 JSON_VERSION="3.9.1"
+SPDLOG_VERSION="1.8.5"
 CPR_VERSION="1.4.0"
 LUAJIT_VERSION="2.1-20201229"
 LUABRIDAGE_VERSION="2.6"
@@ -54,6 +55,14 @@ cd ~/github
 # json
 curl -fsL https://github.com/nlohmann/json/releases/download/v${JSON_VERSION}/json.hpp -o json.hpp
 ln -s ~/github/json.hpp ~/${REPO}/common/
+
+# spdlog && fmtlib
+curl -fsL https://github.com/gabime/spdlog/archive/v${SPDLOG_VERSION}.tar.gz -o spdlog.tgz
+tar xfz spdlog.tgz
+cp spdlog-${SPDLOG_VERSION}
+mkdir build &&  cd build
+cmake .. && make -j && make install && make clean
+cd ..
 
 # curl/cpr
 curl -fsL https://github.com/whoshuu/cpr/archive/${CPR_VERSION}.tar.gz -o cpr.tgz
