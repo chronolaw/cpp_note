@@ -1,9 +1,9 @@
 // Copyright (c) 2021 by Chrono
 //
-// g++ format.cpp -std=c++20 -o a.out;./a.out
+// g++ fmt.cpp -std=c++20 -o a.out;./a.out
 //
-// g++ format.cpp -std=c++17 -lspdlog -lpthread -o a.out;./a.out
-// g++ format.cpp -std=c++20 -lspdlog -lpthread -o a.out;./a.out
+// g++ fmt.cpp -std=c++17 -lspdlog -lpthread -o a.out;./a.out
+// g++ fmt.cpp -std=c++20 -lspdlog -lpthread -o a.out;./a.out
 
 #include <cassert>
 
