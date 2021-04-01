@@ -24,17 +24,19 @@ void case1()
 {
     using namespace std;
 
-#if __has_include(<format>)
+#if defined(SPDLOG_COMPILED_LIB)
+    using namespace fmt;
+#endif
+
     cout << "C++20 format" << endl;
 
     cout << format("{}", 100L) << endl;
     cout << format("{:6}", "hello") << endl;
-    cout << format("{:04}, {:+04}", 100L) << endl;
-    cout << format("{1}-{1}", "hello") << endl;
+    //cout << format("{:04}, {:+04}", 100L) << endl;
+    //cout << format("{1}-{1}", "hello") << endl;
 
     cout << format("{{xxx}}") << endl;
 
-#endif
 }
 
 int main()
