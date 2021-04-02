@@ -47,7 +47,7 @@ tar xfz spdlog.tgz
 cd spdlog-${SPDLOG_VERSION}
 mkdir build &&  cd build
 cmake .. && make -j && make install && make clean
-cd ..
+cd ../..
 
 # curl/cpr
 curl -fsL https://github.com/whoshuu/cpr/archive/${CPR_VERSION}.tar.gz -o cpr.tgz
