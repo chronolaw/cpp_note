@@ -31,15 +31,15 @@ void case1()
     cout << "C++20 format" << endl;
 
     cout << format("{}", 100L) << endl;
-    cout << format("{:#}", 100L) << endl;
-    cout << format("{:6}", "hello") << endl;
-
-    //cout << format("{:04}, {:+04}", 100L) << endl;
-
     cout << format("{0}-{0}, {1} {2}",
                    "hello", 2.718, 3.14) <<endl;
 
-    cout << format("{{xxx}}") << endl;
+    cout << format("{:>10}", "hello") << endl;
+    cout << format("{0:x}, {0:#X}", 100L) << endl;
+
+    cout << format("{:04}, {:+04}", 100L, 88) << endl;
+
+    cout << format("see:{{xxx}}") << endl;
 
 }
 
