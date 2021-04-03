@@ -29,6 +29,10 @@ void case1()
     //using sregex = std::regex;
     //using cregex = std::regex;
 
+    using namespace std::regex_constants;
+    regex reg1 {"xyz", icase|optimize};
+    regex reg2 {R"(a*b{2,3})"};
+
     auto str = "neir:automata"s;
 
     auto reg  = make_regex(R"(^(\w+)\:(\w+)$)");
@@ -36,10 +40,17 @@ void case1()
 
     assert(regex_match(str, what, reg));
 
+    assert(what[1] == "neir");
+    assert(what[2] == "automata");
+
     for(const auto& x : what) {
         cout << x << ',';
     }
     cout << endl;
+
+    //str = "a,b";
+    //assert(!regex_match(str, what, reg));
+    assert(!regex_match("a,b", reg));
 }
 
 void case2()
@@ -59,6 +70,25 @@ void case2()
     assert(what[1] == "god");
     assert(what[2] == "of");
 
+
+    auto reg1 = make_regex(R"(^unix)");
+    auto reg2 = make_regex(R"(com$)");
+
+    assert(regex_search("unix_time", reg1));
+    assert(regex_search("abc.com", reg2));
+
+    assert(!regex_search("win_os", reg1));
+    assert(!regex_search("abc.org", reg2));
+}
+
+void case3()
+{
+    using namespace std;
+
+    auto str = "god of war"s;
+
+    auto reg  = make_regex(R"((\w+)\s(\w+))");
+
     auto new_str = regex_replace(
         str,
         make_regex(R"(\w+$)"),
@@ -66,14 +96,40 @@ void case2()
     );
 
     cout << new_str << endl;
+
+    cout << regex_replace(
+                regex_replace(
+                    str,
+                    make_regex("\\w+$"),
+                    "peace"
+                ),
+                make_regex("^\\w+"),
+                "godness"
+        ) << endl;
+
+    cout << regex_replace(
+        "hello mike",
+        make_regex(R"((\w+)\s(\w+))"),
+        "$2-says-$1 ($&)"
+        ) << endl;
 }
 
+void case4()
+{
+    //auto reg = make_regex(R"(\w+)");
 
+    for (int i = 0;i < 100; i++) {
+        auto reg = make_regex(R"(\w+)");
+        regex_match("123", reg);
+    }
+}
 
 int main()
 {
     case1();
     case2();
+    case3();
+    case4();
 
     using namespace std;
 
