@@ -10,6 +10,12 @@
 #include <iostream>
 #include <string>
 
+//#if __has_include(<format>)
+//#include <format>
+//#else
+//#error "no std::format"
+//#endif
+
 #if __has_include(<format>)
 #include <format>
 #elif __has_include(<spdlog/fmt/fmt.h>)
@@ -26,6 +32,7 @@ void case1()
 
 #if defined(SPDLOG_COMPILED_LIB)
     using namespace fmt;
+    cout << "using fmtlib implement" << endl;
 #endif
 
     cout << "C++20 format" << endl;
@@ -35,9 +42,9 @@ void case1()
                    "hello", 2.718, 3.14) <<endl;
 
     cout << format("{:>10}", "hello") << endl;
-    cout << format("{0:x}, {0:#X}", 100L) << endl;
-
     cout << format("{:04}, {:+04}", 100L, 88) << endl;
+    cout << format("{0:x}, {0:#X}", 100L) << endl;
+    cout << format("{:04o}, {:04b}", 7, 5) << endl;
 
     cout << format("see:{{xxx}}") << endl;
 
