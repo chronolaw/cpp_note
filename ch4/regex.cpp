@@ -33,9 +33,13 @@ void case1()
     regex reg1 {"xyz", icase|optimize};
     regex reg2 {R"(a*b{2,3})"};
 
+    auto reg  = make_regex(R"(^(\w+)\:(\w+)$)");
+
+    assert(regex_match("a:b", reg));
+    assert(!regex_match("a,b", reg));
+
     auto str = "neir:automata"s;
 
-    auto reg  = make_regex(R"(^(\w+)\:(\w+)$)");
     auto what = make_match();
 
     assert(regex_match(str, what, reg));
@@ -50,7 +54,6 @@ void case1()
 
     //str = "a,b";
     //assert(!regex_match(str, what, reg));
-    assert(!regex_match("a,b", reg));
 }
 
 void case2()
@@ -96,6 +99,16 @@ void case3()
     );
 
     cout << new_str << endl;
+
+    cout << regex_replace(
+        "   xxx  ",
+        make_regex("^\\s+"), ""
+        ) << endl;
+
+    cout << regex_replace(
+        "   xxx---",
+        make_regex("\\-+$"), ""
+        ) << endl;
 
     cout << regex_replace(
                 regex_replace(
