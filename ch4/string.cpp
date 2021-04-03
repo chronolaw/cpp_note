@@ -9,7 +9,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <regex>
 
 void case1()
 {
@@ -35,7 +34,7 @@ void case1()
 void case2()
 {
     // enable literal suffix 's'
-    using namespace std::literals::string_literals;
+    using namespace std::literals;
 
     using std::string;
 
@@ -76,38 +75,6 @@ void case4()
 
     assert(to_string(1984) == "1984");
 }
-
-class my_string_view final
-{
-public:
-    using this_type = my_string_view;
-    using string_type = std::string;
-    using string_ref_type = const std::string&;
-
-    using char_ptr_type = const char*;
-    using size_type = size_t;
-private:
-    char_ptr_type ptr = nullptr;
-    size_type len = 0;
-public:
-    my_string_view() = default;
-   ~my_string_view() = default;
-
-    my_string_view(string_ref_type str) noexcept
-        : ptr(str.data()), len(str.length())
-    {}
-public:
-    char_ptr_type data() const
-    {
-        return ptr;
-    }
-
-    size_type size() const
-    {
-        return len;
-    }
-};
-
 
 int main()
 {
