@@ -35,8 +35,9 @@ void case1()
 void case2()
 {
     using namespace std;
+    using namespace std::literals;
 
-    string_view sv {"god of war"};
+    string_view sv {"god of war"s};
 
     assert(!sv.empty());
     assert(sv.size() == 10);
