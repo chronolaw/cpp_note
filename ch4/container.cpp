@@ -137,7 +137,7 @@ void case4()
     }
     cout << endl;
 
-    auto comp = [](auto a, auto b)
+    auto comp = [](auto&& a, auto&& b)
     {
         return a > b;
     };
