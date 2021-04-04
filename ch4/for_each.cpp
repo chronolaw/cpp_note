@@ -54,8 +54,9 @@ void case2()
 {
     vector<int> v = {3,5,1,7,10};
 
+    cout << __cplusplus << endl;
 // it can not work in gcc 7.5
-#if __cplusplus >= 202002
+#if __cplusplus > 201703
     for_each_n(
         cbegin(v), 3,
         [](const auto& x)
