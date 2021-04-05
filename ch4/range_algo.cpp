@@ -1,8 +1,6 @@
 // Copyright (c) 2021 by Chrono
 //
-// g++ range_algo.cpp -std=c++17 -o a.out;./a.out
 // g++ range_algo.cpp -std=c++20 -o a.out;./a.out
-// g++ range_algo.cpp -std=c++17 -I../common -o a.out;./a.out
 
 #include <cassert>
 
@@ -20,10 +18,16 @@
 #include <algorithm>
 
 using namespace std;
+namespace ranges = std::ranges;
 
 void case1()
 {
 
+    vector<int> v = {1,3,5,7,9};
+
+    ranges:for_each(v, [](auto& x){
+        cout << x << endl;
+    });
 }
 
 
