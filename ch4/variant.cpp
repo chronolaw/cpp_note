@@ -49,11 +49,61 @@ void case2()
     assert(p == nullptr);
 }
 
+void case3()
+{
+    variant<int, string> v;
+
+    auto vistor = [](auto& x) {
+        x = x + x;
+        cout << x << endl;
+    };
+
+    v = 10;
+    std::visit(vistor, v);
+
+    v = "ok";
+    std::visit(vistor, v);
+}
+
+void case4()
+{
+    struct Swan final {
+        void fly() {
+            cout << "swan flies" << endl;
+        }
+    };
+
+    struct Ostrich final {
+        void fly() {
+            cout << "ostrich can't fly" << endl;
+        }
+    };
+
+    struct Phoenix final {
+        void fly() {
+            cout << "phoenix flies high" << endl;
+        }
+    };
+
+    variant<Swan, Ostrich, Phoenix> bird;
+    auto fly_it = [](auto& x) {
+        x.fly();
+    };
+
+    bird = Swan();
+    std::visit(fly_it, bird);
+
+    bird = Ostrich();
+    std::visit(fly_it, bird);
+}
+
 
 int main()
 {
     case1();
     case2();
+    case3();
+    case4();
 
     cout << "variant demo" << endl;
 }
