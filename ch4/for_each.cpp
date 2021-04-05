@@ -56,7 +56,8 @@ void case2()
 
     cout << __cplusplus << endl;
 // it can not work in gcc 7.5
-#if __cplusplus > 201703
+//#if __cplusplus > 201703
+#if __GNUC__ > 7
     for_each_n(
         cbegin(v), 3,
         [](const auto& x)
@@ -64,6 +65,8 @@ void case2()
             cout << x*x << ",";
         }
     );
+#else
+    cout << "for_each_n can not work" << endl;
 #endif
     cout << endl;
 }
