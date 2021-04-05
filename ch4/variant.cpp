@@ -5,7 +5,6 @@
 // g++ variant.cpp -std=c++17 -I../common -o a.out;./a.out
 
 #include <cassert>
-#include <cmath>
 
 #include <iostream>
 #include <string>
