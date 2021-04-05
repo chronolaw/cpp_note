@@ -28,10 +28,32 @@ void case1()
 
 }
 
+void case2()
+{
+    variant<int, float, double> v;
+
+    v = 42;
+    assert(v.index() == 0);
+    assert(get<0>(v) == 42);
+
+    v = 3.14f;
+    assert(v.index() == 1);
+
+    v = 2.718;
+    assert(v.index() == 2);
+
+    auto x = get<double>(v);
+    cout << x << endl;
+
+    auto p = get_if<int>(&v);
+    assert(p == nullptr);
+}
+
 
 int main()
 {
     case1();
+    case2();
 
     cout << "variant demo" << endl;
 }
