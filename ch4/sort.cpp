@@ -58,7 +58,7 @@ void case1()
 
     // Median
     auto mid_iter =
-        next(begin(v), v.size()/2);
+        next(begin(v), size(v)/2);
     std::nth_element( begin(v), mid_iter, end(v));
     for_each(cbegin(v), cend(v), print);
     cout << "median is " << *mid_iter << endl;
