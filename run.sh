@@ -8,5 +8,6 @@ GCC=chronolaw/cpp_note:gcc7
 
 #echo ${GCC}
 
+#docker run -it --rm -v ${PWD}:/tmp:ro ${GCC}
 docker run -it --rm -v ${PWD}:/tmp ${GCC}
 
