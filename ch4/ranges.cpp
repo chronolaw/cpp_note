@@ -18,10 +18,10 @@
 #include <algorithm>
 
 using namespace std;
-namespace ranges = std::ranges;
 
 void case1()
 {
+    namespace ranges = std::ranges;
 
     vector<int> v = {9,5,1,7,3};
 
@@ -48,12 +48,37 @@ void case1()
     assert(pos != end(v) && *pos == 3);
 }
 
+void case2()
+{
+    auto print = [](const auto& x){
+        cout << x << ",";
+    };
+
+    namespace ranges = std::ranges;
+    namespace views = std::views;
+
+    vector<int> v = {3,7,2,4,9,6,8,1,5};
+
+    auto r = v | views::take(5);
+
+    ranges::for_each(r, print);
+
+    ranges::for_each(
+        ranges::sort(
+            v | views::filter(
+                [](auto& x) {
+                    return x % 2 == 0;
+                })
+            ),
+        print
+    );
+}
+
 
 int main()
 {
     case1();
-
-    using namespace std;
+    case2();
 
     cout << "ranges algorithm demo" << endl;
 }
