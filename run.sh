@@ -3,8 +3,8 @@
 #GCC=gcc:10
 #GCC=gcc:7
 
-#GCC=chronolaw/cpp_note:gcc10
-GCC=chronolaw/cpp_note:gcc7
+GCC=chronolaw/cpp_note:gcc10
+#GCC=chronolaw/cpp_note:gcc7
 
 #echo ${GCC}
 
