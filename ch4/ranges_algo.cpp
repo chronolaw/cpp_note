@@ -23,11 +23,29 @@ namespace ranges = std::ranges;
 void case1()
 {
 
-    vector<int> v = {1,3,5,7,9};
+    vector<int> v = {9,5,1,7,3};
 
-    ranges::for_each(v, [](auto& x){
-        cout << x << endl;
-    });
+    auto print = [](const auto& x){
+        cout << x << ",";
+    };
+
+    ranges::for_each(v, print);
+    cout << endl;
+
+    cout << ranges::count_if(
+        v, [](auto& x){
+                return x >= 5;
+            })
+    << endl;
+
+    ranges::stable_sort(v);
+    ranges::for_each(v, print);
+    cout << endl;
+
+    assert(ranges::binary_search(v, 7));
+
+    auto pos = ranges::lower_bound(v, 3);
+    assert(pos != end(v) && *pos == 3);
 }
 
 
@@ -37,5 +55,5 @@ int main()
 
     using namespace std;
 
-    cout << "range algorithm demo" << endl;
+    cout << "ranges algorithm demo" << endl;
 }
