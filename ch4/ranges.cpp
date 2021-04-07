@@ -1,6 +1,6 @@
 // Copyright (c) 2021 by Chrono
 //
-// g++ ranges_algo.cpp -std=c++20 -o a.out;./a.out
+// g++ ranges.cpp -std=c++20 -o a.out;./a.out
 
 #include <cassert>
 
@@ -19,15 +19,16 @@
 
 using namespace std;
 
+namespace ranges = std::ranges;
+namespace views = std::views;
+
+auto print = [](const auto& x){
+    cout << x << ",";
+};
+
 void case1()
 {
-    namespace ranges = std::ranges;
-
     vector<int> v = {9,5,1,7,3};
-
-    auto print = [](const auto& x){
-        cout << x << ",";
-    };
 
     ranges::for_each(v, print);
     cout << endl;
@@ -50,35 +51,59 @@ void case1()
 
 void case2()
 {
-    auto print = [](const auto& x){
-        cout << x << ",";
-    };
-
-    namespace ranges = std::ranges;
-    namespace views = std::views;
-
     vector<int> v = {3,7,2,4,9,6,8,1,5};
 
     auto r = v | views::take(5);
 
     ranges::for_each(r, print);
+    cout << endl;
+
+}
+
+void case3()
+{
+
+    vector<int> v = {3,7,2,4,9,6,8,1,5};
+
+    ranges::for_each(v, print);
+    cout << endl;
+
+#if 0
+    auto r1 =  v | views::filter(
+                [](auto& x) {
+                    return x % 2 == 0;
+                }) ;
+    ranges::for_each(r1, print);
+    cout << endl;
+#endif
 
     ranges::for_each(
-        ranges::sort(
             v | views::filter(
                 [](auto& x) {
                     return x % 2 == 0;
-                })
-            ),
+                }),
         print
     );
-}
+    cout << endl;
 
+    for (auto&& x : v | views::drop(3) |views::reverse) {
+        cout << x << ",";
+    }
+    cout << endl;
+
+    decltype(v) v2;
+    ranges::copy(v | views::take(3), back_inserter(v2));
+
+    ranges::for_each(v2, print);
+    cout << endl;
+
+}
 
 int main()
 {
     case1();
     case2();
+    case3();
 
     cout << "ranges algorithm demo" << endl;
 }
