@@ -47,9 +47,35 @@ void case1()
 
     auto pos = ranges::lower_bound(v, 3);
     assert(pos != end(v) && *pos == 3);
+
+    cout << endl;
 }
 
 void case2()
+{
+    minstd_rand rand;
+
+    vector<int> v = {9,5,1,7,3};
+
+    ranges::shuffle(v, rand);
+    ranges::for_each(v, print);
+
+    ranges::shuffle(v, rand);
+    cout << endl;
+
+    ranges::partial_sort(v, next(begin(v), 3));
+    ranges::for_each(v, print);
+
+    ranges::shuffle(v, rand);
+    cout << endl;
+
+    auto [mi, ma] = ranges::minmax_element(v);
+    cout << *mi << ","
+         << *ma << endl;
+    cout << endl;
+}
+
+void case3()
 {
     vector<int> v = {3,7,2,4,9,6,8,1,5};
 
@@ -57,10 +83,9 @@ void case2()
 
     ranges::for_each(r, print);
     cout << endl;
-
 }
 
-void case3()
+void case4()
 {
 
     vector<int> v = {3,7,2,4,9,6,8,1,5};
@@ -104,6 +129,7 @@ int main()
     case1();
     case2();
     case3();
+    case4();
 
     cout << "ranges algorithm demo" << endl;
 }

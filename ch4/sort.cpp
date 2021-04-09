@@ -79,11 +79,11 @@ void case1()
     cout << endl;
 
     // min/max
-    auto value = std::minmax_element(
+    auto [mi, ma] = std::minmax_element(
         cbegin(v), cend(v)
     );
-    cout << *value.first << ","
-         << *value.second << endl;
+    cout << *mi << ","
+         << *ma << endl;
 }
 
 int main()
