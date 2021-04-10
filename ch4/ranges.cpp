@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include <random>
+#include <string>
 #include <array>
 #include <vector>
 
@@ -58,9 +59,6 @@ void case2()
     vector<int> v = {9,5,1,7,3};
 
     ranges::shuffle(v, rand);
-    ranges::for_each(v, print);
-
-    ranges::shuffle(v, rand);
     cout << endl;
 
     ranges::partial_sort(v, next(begin(v), 3));
@@ -79,9 +77,17 @@ void case3()
 {
     vector<int> v = {3,7,2,4,9,6,8,1,5};
 
-    auto r = v | views::take(5);
+    for (auto&& x : v | views::drop(3) | views::reverse) {
+        cout << x << ",";
+    }
+    cout << endl;
 
-    ranges::for_each(r, print);
+    auto r1 = v | views::drop(3);
+    auto r2 = r1 | views::reverse;
+
+    ranges::for_each(r2, print);
+    cout << endl;
+
     cout << endl;
 }
 
@@ -111,17 +117,23 @@ void case4()
     );
     cout << endl;
 
-    for (auto&& x : v | views::drop(3) |views::reverse) {
-        cout << x << ",";
-    }
-    cout << endl;
-
     decltype(v) v2;
     ranges::copy(v | views::take(3), back_inserter(v2));
 
     ranges::for_each(v2, print);
     cout << endl;
 
+    vector<pair<int,string>> pairs = {
+        {1, "one"}, {2, "two"}, {3, "three"}
+    };
+
+    ranges::for_each(
+        pairs | views::take(2) | views::values,
+        print
+    );
+    cout << endl;
+
+    cout << endl;
 }
 
 int main()
