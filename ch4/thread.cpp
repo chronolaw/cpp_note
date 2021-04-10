@@ -49,13 +49,24 @@ void case2()
     //thread t1(task);
     //t1.join();
 
-    jthread {task};
+    jthread jt{task};
+}
+
+void case3()
+{
+    mutex mu1, mu2;
+
+    int x = 0;
+    if (scoped_lock guard(mu1, mu2); x == 0) {
+        cout << "scoped_locked" << endl;
+    }
 }
 
 int main()
 {
     case1();
     case2();
+    case3();
 
     cout << "thread demo" << endl;
 }
