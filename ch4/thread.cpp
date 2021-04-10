@@ -1,6 +1,5 @@
 // Copyright (c) 2021 by Chrono
 //
-// g++ thread.cpp -lpthread -std=c++17 -o a.out;./a.out
 // g++ thread.cpp -lpthread -std=c++20 -o a.out;./a.out
 
 #include <cassert>
@@ -14,36 +13,48 @@
 
 using namespace std;
 
-void case2()
+void case1()
 {
-    auto task = [](auto x)
+    auto task = [](bool flag)
     {
-        //using namespace std::chrono_literals;
+        auto tid = this_thread::get_id();
 
-        this_thread::sleep_for( x * 1ms);
+        if (flag) {
+            cout << tid << "thread yield" << endl;
+            this_thread::yield();
+        }
 
-        cout << "sleep for " << x << endl;
+        auto time = chrono::system_clock::now() + 100ms;
+        this_thread::sleep_until(time);
 
-        return x;
+        cout << tid << " sleep until" << endl;
     };
 
-    auto f = std::async(task, 10);
+    thread t1(task, true);
+    thread t2(task, false);
 
-    f.wait();
+    t1.join();
+    t2.join();
+}
 
-    //cout << f.valid() << endl;
+void case2()
+{
+    auto task = []()
+    {
+        this_thread::sleep_for(1s);
 
-    assert(f.valid());
-    cout << f.get() << endl;
-    assert(!f.valid());
+        cout << "sleep for 1s" << endl;
+    };
 
-    //cout << f.get() << endl;
-    //cout << f.valid() << endl;
+    //thread t1(task);
+    //t1.join();
+
+    jthread {task};
 }
 
 int main()
 {
-    //case1();
+    case1();
     case2();
 
     cout << "thread demo" << endl;
