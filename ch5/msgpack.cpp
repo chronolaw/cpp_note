@@ -5,6 +5,7 @@
 // /usr/include/msgpack
 //
 // g++ msgpack.cpp -std=c++17 -o a.out;./a.out
+// g++ msgpack.cpp -std=c++20 -o a.out;./a.out
 //
 // source include
 // g++ msgpack.cpp -std=c++17 -I../common/include -o a.out;./a.out
@@ -105,6 +106,8 @@ void case3()
 
     Book book2;
     obj.convert(book2);
+    //msgpack::unpack(sbuf.data(), sbuf.size()).get().convert(book2);
+
 
     assert(book2.id == book1.id);
     assert(book2.tags.size() == 2);
