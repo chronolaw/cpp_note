@@ -3,7 +3,8 @@
 // git clone git@github.com:nlohmann/json.git
 // wget https://github.com/nlohmann/json/releases/download/v3.7.3/json.hpp
 //
-// g++ json.cpp -std=c++14 -I../common -o a.out;./a.out
+// g++ json.cpp -std=c++17 -I../common -o a.out;./a.out
+// g++ json.cpp -std=c++20 -I../common -o a.out;./a.out
 
 #include <iostream>
 
