@@ -2,24 +2,24 @@
 //
 // protoc --cpp_out=. sample.proto
 
-syntax = "proto3";
+syntax = "proto2";
 
 package sample;
 
 message Vendor
 {
-    uint32     id      = 1;
-    string     name    = 2;
-    bool       valid   = 3;
-    string     tel     = 4;
+    required uint32     id      = 1;
+    required string     name    = 2;
+    required bool       valid   = 3;
+    optional string     tel     = 4;
 }
 
 message Product
 {
-    int32      id      = 1;
-    string     name    = 2;
+    required int32      id      = 1;
+    required string     name    = 2;
 
-    string     tag     = 3;
+    repeated string     tag     = 3;
 
-    Vendor     vendor  = 10;
+    optional Vendor     vendor  = 10;
 }
