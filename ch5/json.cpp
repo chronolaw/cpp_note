@@ -74,6 +74,29 @@ void case3()
     }
 }
 
+void case4()
+{
+    auto j = R"({
+        "os": "linux",
+        "arch": "arm64"
+    })"_json;
+
+    assert(j["os"] == "linux");
+    assert(j["arch"] == "arm64");
+
+    cout << j.dump(2) << endl;
+}
+
+void case5()
+{
+    auto j = R"({"n":[0,1,2]})"_json;
+
+    auto data = json_t::to_bson(j);
+    auto obj = json_t::from_bson(data);
+
+    assert(obj["n"][0] == 0);
+}
+
 int main()
 {
     //cout << json_t::meta() << endl;
@@ -82,6 +105,8 @@ int main()
     case1();
     case2();
     case3();
+    case4();
+    case5();
 
     cout << "json demo" << endl;
 }
