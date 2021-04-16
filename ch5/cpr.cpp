@@ -74,6 +74,7 @@ void case3()
     for(auto& [k,v] : res.header) {
         cout << k << "=>"
              << v << endl;
+    }
 }
 
 int main()
