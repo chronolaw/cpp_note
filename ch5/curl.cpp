@@ -3,13 +3,13 @@
 // sudo apt-get remove libcurl4
 // sudo apt-get install libcurl4-openssl-dev
 //
+// g++ curl.cpp -std=c++17 -lcurl -o a.out;./a.out
+// g++ curl.cpp -std=c++20 -lcurl -o a.out;./a.out
+//
 // curl-config --libs
 // curl-config --version
 // curl-config --features
 // curl-config --protocols
-//
-// g++ curl.cpp -std=c++17 -lcurl -o a.out;./a.out
-// g++ curl.cpp -std=c++20 -lcurl -o a.out;./a.out
 
 #include <cassert>
 
