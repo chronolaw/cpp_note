@@ -25,6 +25,22 @@ using namespace std;
 
 void case1()
 {
+    auto serialize = [](const auto& x) {
+        msgpack::sbuffer sbuf;
+        msgpack::pack(sbuf, x);
+
+        cout << sbuf.size() << endl;
+    };
+
+    serialize(99);
+    serialize(3.14);
+    serialize("hello msgpack"s);
+    serialize(vector{1,2,3});
+    serialize(tuple{1,"str"s, true});
+}
+
+void case2()
+{
     vector<int> v = {1,2,3,4,5};
 
     msgpack::sbuffer sbuf;
@@ -43,10 +59,11 @@ void case1()
     assert(std::equal(begin(v), end(v), begin(v2)));
 }
 
-void case2()
+void case3()
 {
     msgpack::sbuffer sbuf;
-    msgpack::packer<decltype(sbuf)> packer(sbuf);
+    //msgpack::packer<decltype(sbuf)> packer(sbuf);
+    msgpack::packer packer(sbuf);
 
     packer.pack(10).pack("monado"s)
           .pack(vector<int>{1,2,3});
@@ -91,7 +108,7 @@ public:
     MSGPACK_DEFINE(id, title, tags);
 };
 
-void case3()
+void case4()
 {
     Book book1 = {1, "1984", {"a","b"}};
 
@@ -114,7 +131,7 @@ void case3()
     cout << book2.title << endl;
 }
 
-void case4()
+void case5()
 {
     auto txt = ""s;
 
@@ -135,6 +152,7 @@ int main()
     case2();
     case3();
     case4();
+    case5();
 
     cout << msgpack_version() << endl;
     cout << "msgpack demo" << endl;
