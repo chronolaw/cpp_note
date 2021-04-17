@@ -116,8 +116,7 @@ void case2()
 
 int main()
 {
-    int a, b, c;
-    std::tie(a, b, c) = zmq::version();
+    auto [a, b, c] = zmq::version();
 
     cout << "version = "
          << a << b << c << endl;
