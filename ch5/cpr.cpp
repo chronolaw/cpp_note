@@ -5,6 +5,7 @@
 // make && make install
 //
 // g++ cpr.cpp -std=c++17 -lcpr -lpthread -lcurl -o a.out;./a.out
+// g++ cpr.cpp -std=c++20 -lcpr -lpthread -lcurl -o a.out;./a.out
 
 #include <cassert>
 

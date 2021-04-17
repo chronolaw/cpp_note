@@ -3,6 +3,7 @@
 // sudo apt-get install libzmq3-dev
 //
 // g++ zmq.cpp -std=c++17 -lzmq -lpthread -o a.out;./a.out
+// g++ zmq.cpp -std=c++20 -lzmq -lpthread -o a.out;./a.out
 
 #include <iostream>
 
