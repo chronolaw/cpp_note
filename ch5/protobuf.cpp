@@ -14,6 +14,8 @@
 #include <iostream>
 #include <vector>
 
+#define PROTO2  2
+
 // just for convient
 //#include "sample.pb.h"
 #include "sample.pb.cc"
@@ -34,9 +36,11 @@ void case1()
     v.clear_tel();
 
     assert(v.IsInitialized());
+#if PROTO2
     assert(v.has_id() && v.id() == 1);
     assert(v.has_name() && v.name() == "sony");
     assert(v.has_valid() && v.valid());
+#endif
 
     cout << v.DebugString() << endl;
 
@@ -75,7 +79,9 @@ void case2()
     p.add_tag("fashion");
     p.add_tag("type_record");
 
+#if PROTO2
     assert(!p.has_vendor());
+#endif
     p.set_allocated_vendor(v);
 }
 
