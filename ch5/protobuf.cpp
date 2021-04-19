@@ -31,6 +31,7 @@ void case1()
     v.set_id(1);
     v.set_name("sony");
     v.set_valid(true);
+    v.clear_tel();
 
     assert(v.IsInitialized());
     assert(v.has_id() && v.id() == 1);
