@@ -21,5 +21,6 @@ IMAGE="chronolaw/cpp_note:${GCC}"
 #docker run -it --rm -v ${PWD}:/tmp:ro ${GCC}
 #docker run -it --rm -v ${PWD}:/tmp ${GCC}
 
+#docker run -it --rm  ${IMAGE}
 docker run -it --rm -v ${PWD}:/tmp ${IMAGE}
 
