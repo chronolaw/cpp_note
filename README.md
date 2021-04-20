@@ -55,6 +55,7 @@ docker run -it --rm chronolaw/cpp_note
 * [Thrift](https://thrift.apache.org/)
 * [libcurl](https://curl.haxx.se/libcurl/)
 * [cpr](https://github.com/whoshuu/cpr)
+* [cinatra](https://github.com/qicosmos/cinatra)
 * [ZMQ](https://zeromq.org/)
 * [cppzmq](https://github.com/zeromq/cppzmq)
 * [pybind11](https://github.com/pybind/pybind11)
