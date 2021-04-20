@@ -3,6 +3,7 @@
 # chrono @ 2021-04
 
 # apt-get
+# libboost-dev libboost-all-dev
 DEBIAN_FRONTEND=noninteractive apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y \
         vim cmake gdb pstack strace  \

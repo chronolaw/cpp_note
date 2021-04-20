@@ -2,6 +2,7 @@
 //
 // apt-get update
 // apt-get install libboost-system-dev -y
+// libboost-dev libboost-all-dev
 //
 // if you have boost 1.72, thenneed not to link boost_system
 //
