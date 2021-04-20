@@ -43,7 +43,7 @@ void case2()
     constexpr auto str = "hello";
     constexpr array<int, 3> arr {1,2,3};
 
-    //constexpr vector<int> vec;
+    //constexpr vector<int> vec {1,2,3};
     //constexpr string s = "str";
     //constexpr map<int,int> m;
 
@@ -65,6 +65,28 @@ void case3()
     static_assert(fib(5) == 8);
 }
 
+constexpr
+void case4()
+{
+#if __cplusplus > 201703
+
+    using namespace std;
+
+    //vector<int> vec {1,2,3};
+    //string s = "str";
+
+    auto x = new char[10];
+    delete[] x;
+
+    try {
+        int a = 10;
+    }
+    catch(...)
+    {
+    }
+
+#endif
+}
 
 int main()
 {
