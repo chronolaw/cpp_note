@@ -11,6 +11,7 @@
 // ./flamegraph.pl --invert --color aqua case1.cbt > icicle.svg
 //
 // g++ gperf.cpp -std=c++17 -lprofiler -ltcmalloc -g -O0 -o a.out;./a.out
+// g++ gperf.cpp -std=c++20 -lprofiler -ltcmalloc -g -O0 -o a.out;./a.out
 
 #include <cassert>
 
