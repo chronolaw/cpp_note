@@ -21,7 +21,7 @@ public:
 
 public:
     using string_type       = std::string;
-    using string_view_type  = std::string_view;
+    using string_view_type  = const std::string&;
     using uint_type         = unsigned int;
     using currency_type     = double;
 

@@ -22,7 +22,7 @@ public:
     using value_type        = luabridge::LuaRef;
 
     using string_type       = std::string;
-    using string_view_type  = std::string_view;
+    using string_view_type  = const std::string&;
     using regex_type        = std::regex;
     using match_type        = std::smatch;
 public:
@@ -37,7 +37,7 @@ public:
 public:
     void load(string_view_type filename) const
     {
-        auto status = luaL_dofile(m_vm.get(), filename.data());
+        auto status = luaL_dofile(m_vm.get(), filename.c_str());
 
         if (status != 0) {
             throw std::runtime_error("failed to parse config");
@@ -57,7 +57,7 @@ public:
         using namespace luabridge;
 
         auto v = getGlobal(
-                    m_vm.get(), w1.data());
+                    m_vm.get(), w1.c_str());
 
         return LuaRef_cast<T>(v[w2]);
     }
