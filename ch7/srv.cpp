@@ -121,7 +121,7 @@ try
             );
 
             if (res.status_code != 200) {
-                cerr << "http post failed" << endl;
+                cerr << "http post failed: " << http_addr << endl;
                 //printf("http post failed\n");
             }
         }   // for(;;)
