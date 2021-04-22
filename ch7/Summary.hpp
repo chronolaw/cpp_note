@@ -75,7 +75,10 @@ public:
             });
 #else
         auto ret = std::ranges::minmax_element(
-            m_sales, std::less{}, &SalesData::sold);
+            m_sales, {},
+            [](const auto& x) {
+                return x.second.sold();
+            });
 #endif
 
         // min max
