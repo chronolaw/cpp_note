@@ -44,6 +44,11 @@ void case2()
     assert(sv.front() == 'g');
     assert(sv[2] == 'd');
     assert(sv.find('w') != string_view::npos);
+
+#if __cplusplus > 201703
+    assert(sv.starts_with("god"));
+    assert(sv.ends_with("war"));
+#endif
 }
 
 void case3()

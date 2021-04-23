@@ -25,6 +25,11 @@ void case1()
     auto p = str.c_str();
     cout << p << endl;
 
+#if __cplusplus > 201703
+    assert(str.starts_with("ab"));
+    assert(str.ends_with("c"));
+#endif
+
     vector<char> v;
     v.push_back('a');
     v.push_back('b');
