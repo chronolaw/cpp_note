@@ -19,7 +19,7 @@ message Product
     int32      id      = 1;
     string     name    = 2;
 
-    string     tag     = 3;
+    repeated string tag = 3;
 
     Vendor     vendor  = 10;
 }
