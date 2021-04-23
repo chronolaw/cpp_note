@@ -14,7 +14,8 @@
 #include <iostream>
 #include <vector>
 
-#define PROTO2  2
+// uncomment this to enable proto2
+//#define PROTO2  2
 
 // just for convient
 //#include "sample.pb.h"
@@ -28,7 +29,9 @@ void case1()
 
     vendor_t v;
 
+#if PROTO2
     assert(!v.IsInitialized());
+#endif
 
     v.set_id(1);
     v.set_name("sony");
@@ -48,7 +51,11 @@ void case1()
     v.SerializeToString(&enc);
 
     vendor_t v2;
+
+#if PROTO2
     assert(!v2.IsInitialized());
+#endif
+
     v2.ParseFromString(enc);
 
     assert(v.id() == v2.id());
@@ -82,6 +89,7 @@ void case2()
 #if PROTO2
     assert(!p.has_vendor());
 #endif
+
     p.set_allocated_vendor(v);
 }
 
