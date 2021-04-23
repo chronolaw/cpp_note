@@ -14,7 +14,8 @@
 #include <iostream>
 #include <vector>
 
-#define PROTO2  2
+// uncomment this to enable proto2
+//#define PROTO2  2
 
 // just for convient
 //#include "sample.pb.h"
