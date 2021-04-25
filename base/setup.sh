@@ -7,7 +7,7 @@
 DEBIAN_FRONTEND=noninteractive apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y \
         vim cmake gdb pstack strace  \
-        libboost-system-dev \
+        libboost-system-dev libboost-timer-dev \
         libmsgpack-dev protobuf-compiler libprotobuf-dev libprotoc-dev \
         libcurl4-openssl-dev libzmq3-dev \
         python3-dev python3-pip \
