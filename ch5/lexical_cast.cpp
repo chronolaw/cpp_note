@@ -6,7 +6,7 @@
 #include <cassert>
 
 #include <iostream>
-//#include <string>
+#include <type_traits>
 
 #include <boost/lexical_cast.hpp>
 
@@ -48,8 +48,9 @@ void case3()
 {
     try
     {
-        //lexical_cast<long>("1024L");
-        //lexical_cast<long long>("999LL");
+        lexical_cast<long>("-100");
+        lexical_cast<long>("1024L");
+        lexical_cast<long long>("999LL");
     }
     catch(bad_lexical_cast& e)
     {
@@ -57,11 +58,48 @@ void case3()
     }
 
 
+    //cout << stol("-100") << endl;
     //cout << stol("1024L") << endl;
     //cout << stoll("999LL") << endl;
 
+    assert(stol("-100") == -100);
     assert(stol("1024L") == 1024L);
     assert(stoll("999LL") == 999LL);
+}
+
+template<typename T, typename U>
+T std_lexical_cast(const U& arg)
+{
+    if constexpr (std::is_same_v<T, int>) {
+        return std::stoi(arg);
+    }
+
+    if constexpr (std::is_same_v<T, long>) {
+        return std::stol(arg);
+    }
+
+    if constexpr (std::is_same_v<T, long long>) {
+        return std::stoll(arg);
+    }
+
+    if constexpr (std::is_same_v<T, double>) {
+        return std::stod(arg);
+    }
+
+    if constexpr (std::is_same_v<T, std::string>) {
+        return std::to_string(arg);
+    }
+
+    return T {};
+}
+
+void case4()
+{
+    assert(std_lexical_cast<int>("+42") == 42);
+    assert(std_lexical_cast<long>("100L") == 100);
+    std_lexical_cast<double>("0.618");
+
+    assert(std_lexical_cast<string>(999) == "999");
 }
 
 int main()
@@ -69,6 +107,7 @@ int main()
     case1();
     case2();
     case3();
+    case4();
 
     cout << "lexical_cast demo" << endl;
 }
