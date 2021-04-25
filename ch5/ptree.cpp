@@ -1,7 +1,7 @@
 // Copyright (c) 2021 by Chrono
 //
-// g++ property_tree.cpp -std=c++17 -o a.out;./a.out
-// g++ property_tree.cpp -std=c++20 -o a.out;./a.out
+// g++ ptree.cpp -std=c++17 -o a.out;./a.out
+// g++ ptree.cpp -std=c++20 -o a.out;./a.out
 
 #include <cassert>
 
