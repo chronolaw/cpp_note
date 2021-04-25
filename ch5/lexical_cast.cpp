@@ -34,17 +34,41 @@ void case2()
 {
     auto s1 = lexical_cast<string>(42);
     auto s2 = lexical_cast<string>(0x64);
+    auto s3 = lexical_cast<string>(0.618);
 
     assert(s1 == "42");
     assert(s2 == "100");
+    //assert(s3 == "0.618");
+    //cout << s3 << endl;
 
     assert(to_string(0x64) == "100");
+}
+
+void case3()
+{
+    try
+    {
+        //lexical_cast<long>("1024L");
+        //lexical_cast<long long>("999LL");
+    }
+    catch(bad_lexical_cast& e)
+    {
+        cout << e.what() << endl;
+    }
+
+
+    //cout << stol("1024L") << endl;
+    //cout << stoll("999LL") << endl;
+
+    assert(stol("1024L") == 1024L);
+    assert(stoll("999LL") == 999LL);
 }
 
 int main()
 {
     case1();
     case2();
+    case3();
 
     cout << "lexical_cast demo" << endl;
 }
