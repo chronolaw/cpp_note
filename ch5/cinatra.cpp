@@ -17,7 +17,6 @@ using namespace std;
 using namespace cinatra;
 
 // curl '127.1/test?a=1&b=2'
-// curl '127.1/test?a=1&b=2' -X GET -d "abcde" -v -H "Content-type: text/plain"
 void srv1()
 {
     const int max_threads = 2;
@@ -43,6 +42,8 @@ void srv1()
 }
 
 
+// curl 127.1/api
+// curl 127.1/api -X POST -d "abcde" -v -H "Content-type: text/plain"
 void srv2()
 {
     const auto max_threads = 2;
@@ -62,7 +63,7 @@ void srv2()
         "/",
         [](auto& req, auto& res) {
             res.set_status_and_content(
-                status_type::forbidden, "code:403");
+                status_type::forbidden, "code:403\n");
         });
 
     srv.set_http_handler<GET, POST>(
@@ -70,23 +71,24 @@ void srv2()
         [](auto& req, auto& res) {
             auto method = req.get_method();
 
-            if (method == GET) {
+            if (method == "GET") {
                 res.set_status_and_content(
-                        status_type::not_found, "code:404");
+                        status_type::not_found, "code:404\n");
                 return;
             }
 
-            assert(method == POST);
+            assert(method == "POST");
 
             if (!req.has_body()) {
                 res.set_status_and_content(
-                        status_type::bad_request, "code:400");
+                        status_type::bad_request, "code:400\n");
                 return;
             }
 
             //cout << "body: \n" <<  req.body() << endl;
             res.set_status_and_content(
-                    status_type::ok, "data:"s + req.body());
+                    status_type::ok,
+                    "data:"s + string(req.body()) + "\n");
         });
 
     srv.run();
@@ -96,7 +98,7 @@ int main()
 {
     cout << "cinatra http srv demo" << endl;
 
-    srv1();
-    //srv2();
+    //srv1();
+    srv2();
 }
 
