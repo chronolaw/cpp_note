@@ -6,11 +6,19 @@
 //
 // if you have boost 1.72, thenneed not to link boost_system
 //
-// g++ cinatra.cpp -std=c++17 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out&
-// g++ cinatra.cpp -std=c++20 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out&
+// g++ cinatra.cpp -std=c++17 -lstdc++fs -lspdlog -lboost_system -pthread -I../common -o a.out;./a.out&
+// g++ cinatra.cpp -std=c++20 -lstdc++fs -lspdlog -lboost_system -pthread -I../common -o a.out;./a.out&
 
 #include <iostream>
 
+#if __has_include(<format>)
+#include <format>
+#elif __has_include(<spdlog/fmt/fmt.h>)
+#define SPDLOG_COMPILED_LIB
+#include <spdlog/fmt/fmt.h>
+#else
+#error "no format lib for demo"
+#endif
 #include <cinatra.hpp>
 
 using namespace std;
@@ -43,9 +51,13 @@ void srv1()
 
 
 // curl 127.1/api
-// curl 127.1/api -X POST -d "abcde" -v -H "Content-type: text/plain"
+// curl 127.1/api -d "abcde" -v -H "Content-type: text/plain"
 void srv2()
 {
+#if defined(SPDLOG_COMPILED_LIB)
+    using namespace fmt;
+#endif
+
     const auto max_threads = 2;
     const auto addr = "0.0.0.0"s;
     const auto port = 80;
@@ -87,7 +99,7 @@ void srv2()
             //cout << "body: \n" <<  req.body() << endl;
             res.set_status_and_content(
                     status_type::ok,
-                    "data:"s + string(req.body()) + "\n");
+                    format("data:{}\n", req.body()));
         });
 
     srv.run();
