@@ -6,8 +6,8 @@
 //
 // if you have boost 1.72, thenneed not to link boost_system
 //
-// g++ cinatra.cpp -std=c++17 -lstdc++fs -lspdlog -lboost_system -pthread -I../common -o a.out;./a.out&
-// g++ cinatra.cpp -std=c++20 -lstdc++fs -lspdlog -lboost_system -pthread -I../common -o a.out;./a.out&
+// g++ cinatra.cpp -std=c++17 -lstdc++fs -lspdlog -lssl -lcrypto -lboost_system -pthread -I../common -o a.out;./a.out&
+// g++ cinatra.cpp -std=c++20 -lstdc++fs -lspdlog -lssl -lcrypto -lboost_system -pthread -I../common -o a.out;./a.out&
 
 #include <iostream>
 
@@ -19,6 +19,8 @@
 #else
 #error "no format lib for demo"
 #endif
+
+#define CINATRA_ENABLE_SSL
 #include <cinatra.hpp>
 
 using namespace std;
@@ -105,11 +107,35 @@ void srv2()
     srv.run();
 }
 
+void srv3()
+{
+    http_ssl_server srv(1);
+
+    srv.set_ssl_conf({"./a.com.crt", "./a.com.key"});
+
+    srv.listen("0.0.0.0", "443");
+
+    srv.set_http_handler<GET>(
+        "/",
+        [](auto& req, auto& res) {
+
+            cout << "host: "
+                 << req.get_header_value("host") << endl;
+
+            res.set_status_and_content(
+                status_type::ok, "hello https srv");
+        }
+    );
+
+    srv.run();
+}
+
 int main()
 {
     cout << "cinatra http srv demo" << endl;
 
     //srv1();
-    srv2();
+    //srv2();
+    srv3();
 }
 
