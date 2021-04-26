@@ -59,8 +59,7 @@ void srv2()
 
     srv.listen(addr, to_string(port));
 
-    srv.set_http_handler<GET>(
-        "/",
+    srv.set_not_found_handler(
         [](auto& req, auto& res) {
             res.set_status_and_content(
                 status_type::forbidden, "code:403\n");
