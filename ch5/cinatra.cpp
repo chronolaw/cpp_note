@@ -6,8 +6,8 @@
 //
 // if you have boost 1.72, thenneed not to link boost_system
 //
-// g++ http_srv.cpp -std=c++17 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out&
-// g++ http_srv.cpp -std=c++20 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out&
+// g++ cinatra.cpp -std=c++17 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out&
+// g++ cinatra.cpp -std=c++20 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out&
 
 #include <iostream>
 
@@ -16,8 +16,8 @@
 using namespace std;
 using namespace cinatra;
 
-// curl '127.1/?a=1&b=2'
-// curl '127.1/?a=1&b=2' -X GET -d "abcde" -v -H "Content-type: text/plain"
+// curl '127.1/test?a=1&b=2'
+// curl '127.1/test?a=1&b=2' -X GET -d "abcde" -v -H "Content-type: text/plain"
 void srv1()
 {
     const int max_threads = 2;
@@ -41,7 +41,7 @@ void srv1()
         //res.set_status_and_content(status_type::ok, "hello http srv");
     };
 
-    srv.set_http_handler<GET>("/", handler);
+    srv.set_http_handler<GET>("/test", handler);
 
     srv.run();
 }
