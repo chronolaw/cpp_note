@@ -62,7 +62,7 @@ void case3()
     //cout << stol("1024L") << endl;
     //cout << stoll("999LL") << endl;
 
-    assert(stol("-100") == -100);
+    assert(stoi("-100") == -100);
     assert(stol("1024L") == 1024L);
     assert(stoll("999LL") == 999LL);
 }
