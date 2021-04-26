@@ -6,8 +6,8 @@
 //
 // if you have boost 1.72, thenneed not to link boost_system
 //
-// g++ http_srv.cpp -std=c++17 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out
-// g++ http_srv.cpp -std=c++20 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out
+// g++ http_srv.cpp -std=c++17 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out&
+// g++ http_srv.cpp -std=c++20 -lstdc++fs -lboost_system -pthread -I../common -o a.out;./a.out&
 
 #include <iostream>
 
@@ -16,21 +16,40 @@
 using namespace std;
 using namespace cinatra;
 
-int main()
+// curl '127.1/?a=1&b=2'
+// curl '127.1/?a=1&b=2' -X GET -d "abcde" -v -H "Content-type: text/plain"
+void srv1()
 {
-    int max_threads = 2;
+    const int max_threads = 2;
 
     http_server srv(max_threads);
 
-    srv.listen("0.0.0.0", "8080");
+    srv.listen("0.0.0.0", "80");
 
-    srv.set_http_handler<GET>("/",
-        [](request& req, response& res) {
+    auto handler = [](auto& req, auto& res) {
+        cout << req.raw_url() << endl;
+        cout << "header: \n" << req.head() << endl;
 
-            res.set_status_and_content(status_type::ok, "hello cinatra");
+        if (req.has_body()) {
+            cout << "body: \n" <<  req.body() << endl;
         }
-    );
+
+        res.set_status(status_type::ok);
+        res.set_content("hello http srv\n");
+        res.build_response_str();
+
+        //res.set_status_and_content(status_type::ok, "hello http srv");
+    };
+
+    srv.set_http_handler<GET>("/", handler);
 
     srv.run();
+}
+
+int main()
+{
+    cout << "cinatra http srv demo" << endl;
+
+    srv1();
 }
 
