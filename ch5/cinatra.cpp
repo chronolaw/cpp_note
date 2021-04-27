@@ -71,6 +71,7 @@ void srv2()
         return;
     }
 
+    srv.set_keep_alive_timeout(30);
     srv.listen(addr, to_string(port));
 
     srv.set_not_found_handler(
@@ -98,15 +99,21 @@ void srv2()
                 return;
             }
 
+            res.add_header("Metroid", "Prime");
+
             //cout << "body: \n" <<  req.body() << endl;
             res.set_status_and_content(
                     status_type::ok,
-                    format("data:{}\n", req.body()));
+                    format("host:{}\ndata:{}\n",
+                            req.get_header_value("host"),
+                            req.body()));
         });
 
     srv.run();
 }
 
+// curl 'https://127.0.0.1' -k
+// curl --resolve a.com:443:127.0.0.1 'https://a.com' -kv
 void srv3()
 {
     http_ssl_server srv(1);
@@ -123,7 +130,7 @@ void srv3()
                  << req.get_header_value("host") << endl;
 
             res.set_status_and_content(
-                status_type::ok, "hello https srv");
+                status_type::ok, "hello https srv\n");
         }
     );
 
