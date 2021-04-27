@@ -6,8 +6,10 @@
 //
 // if you have boost 1.72, thenneed not to link boost_system
 //
-// g++ backend.cpp -std=c++17 -lboost_system -pthread -I../common -o h.out;./h.out&
-// g++ backend.cpp -std=c++20 -lboost_system -pthread -I../common -o h.out;./h.out&
+// g++ backend.cpp -std=c++17 -lstdc++fs -lboost_system -pthread -I../common -o h.out;./h.out&
+// g++ backend.cpp -std=c++20 -lstdc++fs -lboost_system -pthread -I../common -o h.out;./h.out&
+//
+// curl 127.1/cpp_note?token=cpp -d 'abcd' -H 'content-type: text/plain'
 
 #include <iostream>
 
@@ -43,7 +45,7 @@ int main()
             }
 
             res.set_status_and_content(
-                    status_type::ok, "");
+                    status_type::ok, "ok");
         });
 
     srv.run();
