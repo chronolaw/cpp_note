@@ -9,8 +9,8 @@ fi
 
 domain=$1
 
-#ca="${domain}"
-ca="${domain}.ca"
+ca="${domain}"
+#ca="${domain}.ca"
 
 days=3650
 
