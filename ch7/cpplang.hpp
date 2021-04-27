@@ -23,7 +23,7 @@
 
 //never 'using namespace std;' in c++ header
 
-// must be C++11 or later
+// must be C++17 or later
 #if __cplusplus < 201703
 #   error "C++ is too old"
 #endif  // __cplusplus < 201703
