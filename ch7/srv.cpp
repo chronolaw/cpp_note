@@ -83,8 +83,10 @@ try
                 SalesData book;
 
                 // xxx: json/msgpack/protobuf
-                auto obj = msgpack::unpack(
-                            msg_ptr->data<char>(), msg_ptr->size()).get();
+                auto handle = msgpack::unpack(
+                            msg_ptr->data<char>(), msg_ptr->size());
+
+                auto obj = handle.get();
                 obj.convert(book);
 
                 //cout << book.id() << endl;
@@ -116,6 +118,7 @@ try
 
             auto res = cpr::Post(
                        cpr::Url{http_addr},
+                       cpr::Header{{"Content-type", "text/plain"}},
                        cpr::Body{j.dump()},
                        cpr::Timeout{200ms}
             );
