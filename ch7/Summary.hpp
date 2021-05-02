@@ -62,7 +62,7 @@ public:
         lock_guard_type guard(m_lock);
 
         if (m_sales.empty()) {
-            return minmax_sales_type();
+            return {};
         }
 
         // algorithm
@@ -73,17 +73,19 @@ public:
             {
                 return a.second.sold() < b.second.sold();
             });
-#else
-        auto ret = std::ranges::minmax_element(
-            m_sales, {},
-            [](const auto& x) {
-                return x.second.sold();
-            });
-#endif
 
         // min max
         auto min_pos = std::get<0>(ret);   //ret.first;
         auto max_pos = std::get<1>(ret);   //ret.second;
+
+#else
+        auto [min_pos, max_pos] =
+            std::ranges::minmax_element(
+                m_sales, {},
+                [](const auto& x) {
+                    return x.second.sold();
+                });
+#endif
 
         return {min_pos->second.id(), max_pos->second.id()};
     }

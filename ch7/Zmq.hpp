@@ -27,17 +27,19 @@ public:
     ZmqContext() = default;
    ~ZmqContext() = default;
 public:
-    static
-    zmq_context_type& context()
-    {
-        static zmq_context_type ctx(thread_num);
-        return ctx;
-    }
+    inline static
+    zmq_context_type context{thread_num};
+    //static
+    //zmq_context_type& context()
+    //{
+    //    static zmq_context_type ctx(thread_num);
+    //    return ctx;
+    //}
 public:
     static
     zmq_socket_type recv_sock(int hwm = 1000, int linger = 10)
     {
-        zmq_socket_type sock(context(), ZMQ_PULL);
+        zmq_socket_type sock(context, ZMQ_PULL);
 
         sock.setsockopt(ZMQ_RCVHWM, hwm);
         sock.setsockopt(ZMQ_LINGER, linger);    // wait for 10ms
@@ -48,7 +50,7 @@ public:
     static
     zmq_socket_type send_sock(int hwm = 1000, int linger = 10)
     {
-        zmq_socket_type sock(context(), ZMQ_PUSH);
+        zmq_socket_type sock(context, ZMQ_PUSH);
 
         sock.setsockopt(ZMQ_SNDHWM, hwm);
         sock.setsockopt(ZMQ_LINGER, linger);    // wait for 10ms

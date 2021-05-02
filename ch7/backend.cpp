@@ -44,6 +44,8 @@ int main()
                 return;
             }
 
+            cout << req.body() << endl;
+
             res.set_status_and_content(
                     status_type::ok, "ok");
         });
