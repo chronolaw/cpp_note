@@ -26,7 +26,7 @@ REPO='cpp_note'
 cd ${HOME}
 
 # git source code
-#git clone https://github.com/chronolaw/${REPO} --depth=1
+git clone https://github.com/chronolaw/${REPO} --depth=1
 #git clone git@github.com:chronolaw/${REPO}.git --depth=1
 
 # setup env

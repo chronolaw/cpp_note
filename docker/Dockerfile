@@ -21,14 +21,14 @@ ARG SRC_IMAGE="chronolaw/cpp_base:gcc7"
 
 FROM ${SRC_IMAGE}
 
-WORKDIR /root
-#WORKDIR /root/cpp_note
+#WORKDIR /root
+WORKDIR /root/cpp_note
 
-#COPY setup.sh /tmp
+COPY setup.sh /tmp
 
-COPY env ./cpp_note/env
-COPY common ./cpp_note/common
-COPY docker/setup.sh /tmp
+#COPY env ./cpp_note/env
+#COPY common ./cpp_note/common
+#COPY docker/setup.sh /tmp
 
 RUN /tmp/setup.sh
 
