@@ -16,7 +16,7 @@ metadata:
     name: k8s-cpp-note
     labels:
         author: chrono
-        lang: c++
+        lang: cpp
         env: study
 
 spec:
