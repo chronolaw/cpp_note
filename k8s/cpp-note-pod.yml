@@ -1,6 +1,7 @@
+# chrono @ 2021-03
+
 # kubernetes pod yaml for cpp note
 # you could run it in k8s/minikube/kind/...
-# chrono @ 2021-03
 
 # kubectl apply  -f cpp-note-pod.yml
 # kubectl delete -f cpp-note-pod.yml
