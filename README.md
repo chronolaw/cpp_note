@@ -1,5 +1,5 @@
 # cpp_note
-C++ practise notebook
+C++ practice notebook
 
 ## Requirements
 
